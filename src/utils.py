@@ -1,5 +1,5 @@
 import psutil, datetime
-import subprocess
+import docker
 
 # rpi4_gpu_temp_cmd = ["vcgencmd", "measure_temp"]
 # res = subprocess.check_output(rpi4_gpu_temp_cmd).decode("utf-8")
@@ -17,6 +17,8 @@ import subprocess
 # print(cpu_freq[0].current, cpu_freq[0].min, cpu_freq[0].max)
 # print(psutil.virtual_memory().total)
 # print(psutil.cpu_percent(interval=None, percpu=True))
+
+client = docker.DockerClient(base_url="unix:///var/run/docker.sock")
 
 
 def get_sys_vitals():
@@ -70,6 +72,9 @@ def get_sys_vitals():
         "disk_io_write_time": disk_io.write_time,
     }
 
+    docker_stats = []
+    for containers in client.containers.list():
+        docker_stats.append(containers.stats(decode=None, stream=False))
     vitals = {
         "no_of_cores": cpu_core_count,
         "cpu_temp": cpu_temp,
@@ -82,9 +87,14 @@ def get_sys_vitals():
         "uptime": datetime.datetime.fromtimestamp(boot_time).strftime(
             "%Y-%m-%d %H:%M:%S"
         ),
+        "docker": docker_stats,
     }
 
     return vitals
 
 
-print(get_sys_vitals())
+# print(get_sys_vitals())
+
+# client = docker.DockerClient(base_url="unix:///var/run/docker.sock")
+# for containers in client.containers.list():
+#     print(containers.stats(decode=None, stream=True))
