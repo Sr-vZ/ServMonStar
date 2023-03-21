@@ -43,8 +43,8 @@ def get_sys_vitals():
         for cf in cpu_freqs:
             cpu_freq.append({"curr": cf.current, "min": cf.min, "max": cf.max})
 
-    cpu_usage_tot = psutil.cpu_percent(interval=1, percpu=False)
-    cpu_usage_cores = psutil.cpu_percent(interval=1, percpu=True)
+    cpu_usage_tot = psutil.cpu_percent(interval=None, percpu=False)
+    cpu_usage_cores = psutil.cpu_percent(interval=None, percpu=True)
     avg_load = [x / cpu_core_count * 100 for x in psutil.getloadavg()]
     ram_stats = psutil.virtual_memory()
     swap_mem = psutil.swap_memory()
@@ -76,6 +76,7 @@ def get_sys_vitals():
     for containers in client.containers.list():
         docker_stats.append(containers.stats(decode=None, stream=False))
     vitals = {
+        "ts": str(datetime.datetime.now()),
         "no_of_cores": cpu_core_count,
         "cpu_temp": cpu_temp,
         "cpu_freq": cpu_freq,
@@ -98,3 +99,5 @@ def get_sys_vitals():
 # client = docker.DockerClient(base_url="unix:///var/run/docker.sock")
 # for containers in client.containers.list():
 #     print(containers.stats(decode=None, stream=True))
+
+# print(datetime.datetime.now().strftime("%Y-%m-%d "))
