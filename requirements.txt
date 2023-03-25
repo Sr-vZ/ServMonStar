@@ -1,3 +1,6 @@
+asyncio
 psutil
 fastapi
+'uvicorn[standard]'
+sse-starlette
 docker

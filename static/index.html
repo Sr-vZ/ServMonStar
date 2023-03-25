@@ -10,7 +10,7 @@
     </title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet">
-    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v6.3.0/css/all.css" rel="stylesheet">
     <!-- Nucleo Icons -->
     <link href="../assets/css/nucleo-icons.css" rel="stylesheet">
     <!-- CSS Files -->
@@ -68,14 +68,6 @@
                             <p>Dashboard</p>
                         </a>
                     </li>
-
-
-
-
-
-
-
-
                 </ul>
                 <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
                     <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
@@ -152,6 +144,45 @@
             <!-- End Navbar -->
             <div class="content">
                 <div class="row">
+                    <div class="col-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Usage</h4>
+                                <h3 class="card-subtitle mb-2"><i class="fa-solid fa-gauge-high text-info"></i> <span
+                                        id="overall_usage_info"> 0 </span> %</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3">
+
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Temparature</h4>
+                                <h3 class="card-subtitle mb-2"><i class="fa-solid fa-temperature-low text-danger"></i>
+                                    <span id="sys_temp_info"> 0 </span> °C</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Memory</h4>
+                                <h3 class="card-subtitle mb-2"><i class="fa-solid fa-memory text-success"></i></i> <span
+                                        id="mem_usage_info"> 0</span> %</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Disk Usage</h4>
+                                <h3 class="card-subtitle mb-2"><i class="fa-solid fa-hard-drive text-primary"></i> <span
+                                        id="disk_usage_info"> 0 </span> %</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-12">
                         <div class="card card-chart">
                             <div class="card-header ">
@@ -160,7 +191,7 @@
                                         <h5 class="card-category">Total Shipments</h5>
                                         <h2 class="card-title">Performance</h2>
                                     </div>
-                                    <div class="col-sm-6">
+                                    <!-- <div class="col-sm-6">
                                         <div class="btn-group btn-group-toggle float-right" data-toggle="buttons">
                                             <label class="btn btn-sm btn-primary btn-simple" id="0">
                                                 <input type="radio" name="options" checked="">
@@ -187,7 +218,7 @@
                                                 </span>
                                             </label>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <div class="card-body">
@@ -245,8 +276,9 @@
                     <div class="col-lg-4">
                         <div class="card card-chart">
                             <div class="card-header">
-                                <h5 class="card-category">Daily Sales</h5>
-                                <h3 class="card-title"><i class="tim-icons icon-delivery-fast text-info"></i> 3,500€
+                                <h5 class="card-category">per CPU</h5>
+                                <!-- <h3 class="card-title"><i class="tim-icons icon-delivery-fast text-info"></i> 3,500€ -->
+                                <h3 class="card-title"><i class="fa-solid fa-microchip text-info"></i> Usage
                                 </h3>
                             </div>
                             <div class="card-body">
@@ -358,6 +390,7 @@
 
     <!-- Chart JS -->
     <script src="../assets/js/plugins/chartjs.min.js"></script>
+    <script src="../assets/js/plugins/chartjs-gauge.js"></script>
     <!--  Notifications Plugin    -->
     <script src="../assets/js/plugins/bootstrap-notify.js"></script>
     <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
