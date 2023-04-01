@@ -84,18 +84,18 @@ async def message_stream(request: Request):
     return EventSourceResponse(event_generator())
 
 
-@app.websocket("/ws/{client_id}")
-async def websocket_client_endpoint(websocket: WebSocket, client_id: int):
-    await manager.connect(websocket, client_id)
-    # active_connections_set.add(websocket)
-    try:
-        while True:
-            # time.sleep(0.2)
-            await manager.broadcast_sys_info(get_sys_vitals())
-            data = await websocket.receive_text()
-    except WebSocketDisconnect:
-        manager.disconnect(websocket, client_id)
-        await manager.broadcast(f"Client #{client_id} left the chat")
+# @app.websocket("/ws/{client_id}")
+# async def websocket_client_endpoint(websocket: WebSocket, client_id: int):
+#     await manager.connect(websocket, client_id)
+#     # active_connections_set.add(websocket)
+#     try:
+#         while True:
+#             # time.sleep(0.2)
+#             await manager.broadcast_sys_info(get_sys_vitals())
+#             data = await websocket.receive_text()
+#     except WebSocketDisconnect:
+#         manager.disconnect(websocket, client_id)
+#         await manager.broadcast(f"Client #{client_id} left the chat")
 
 
 # @app.on_event("shutdown")

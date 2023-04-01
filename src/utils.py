@@ -54,6 +54,8 @@ def get_sys_vitals():
     # disk_stats_per_disk = psutil.disk_io_counters(perdisk=True)
     disk_usage = psutil.disk_usage("/")
     disk_io = psutil.disk_io_counters()
+
+    nw_io = psutil.net_io_counters()
     ram_usage_stats = {
         "percent": ram_stats.percent,
         "ram_total": ram_stats.total,
@@ -71,6 +73,12 @@ def get_sys_vitals():
         "disk_io_read_time": disk_io.read_time,
         "disk_io_write_time": disk_io.write_time,
     }
+    network_usage_stats = {
+        "bytes_recv": nw_io.bytes_recv,
+        "bytes_sent": nw_io.bytes_sent,
+        "packets_recv": nw_io.packets_recv,
+        "packets_sent": nw_io.packets_sent,
+    }
 
     docker_stats = []
     for containers in client.containers.list():
@@ -85,6 +93,7 @@ def get_sys_vitals():
         "avg_load": avg_load,
         "ram_usage": ram_usage_stats,
         "disk_usage": disk_usage_stats,
+        "network_usage": network_usage_stats,
         "uptime": datetime.datetime.fromtimestamp(boot_time).strftime(
             "%Y-%m-%d %H:%M:%S"
         ),
