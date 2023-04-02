@@ -1,6 +1,6 @@
 asyncio
-psutil
+psutil==5.9.4
 fastapi
-'uvicorn[standard]'
+uvicorn[standard]
 sse-starlette
 docker
