@@ -150,7 +150,7 @@ var config = {
     data: {
         labels: [],
         datasets: [{
-            label: "My First dataset",
+            label: "Server usage",
             fill: true,
             backgroundColor: gradientStroke,
             borderColor: '#d346b1',
@@ -197,7 +197,9 @@ var config = {
 myChartData = new Chart(ctx, config)
 var client_id = Date.now()
 var wsUri = "ws://localhost:8000/ws/" + client_id;
+site_url = document.URL
 sseUri = "http://localhost:8000/sys_info"
+sseUri = site_url + "sys_info"
 var output;
 
 // const exampleSocket = new WebSocket(wsUri)

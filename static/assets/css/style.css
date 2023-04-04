@@ -101,10 +101,10 @@
 }
 
 .gauge-wrapper {
-    width: 252px;
-    height: 220px;
+    width: 252px !important;
+    height: 220px !important;
     /* float: left; */
-    margin: auto;
+    margin: auto !important;
     overflow: hidden;
 }
 

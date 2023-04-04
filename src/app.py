@@ -104,4 +104,8 @@ async def message_stream(request: Request):
 #         await websocket.close(code=1001)
 
 
-app.mount("/", StaticFiles(directory="static", html=True), name="static")
+app.mount(
+    "/",
+    StaticFiles(directory="/home/srvz/Projects/ServMonStar/static/", html=True),
+    name="static",
+)
