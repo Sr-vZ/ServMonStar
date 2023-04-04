@@ -1,0 +1,15 @@
+[Unit]
+Description=ServMonStar - Monitoring app for the Rpi4 server
+After=multi-user.target
+
+[Service]
+Type=idle
+Environment="PATH=/home/srvz/Projects/ServMonStar/.venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+ExecStart=/bin/bash -c 'source /home/srvz/Projects/ServMonStar/.venv/bin/activate  && /usr/bin/python3 /home/srvz/Projects/ServMonStar/main.py'
+User=srvz
+WorkingDirectory=/home/srvz/Projects/ServMonStar/
+Restart=always
+
+
+[Install]
+WantedBy=multi-user.target
